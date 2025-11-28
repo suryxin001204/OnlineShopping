@@ -1,0 +1,442 @@
+/* 管理页面通用样式 */
+
+/* 页面容器 */
+.admin-page {
+  padding: 1.5rem;
+  background: #f5f7fa;
+  min-height: 100vh;
+}
+
+/* 页面头部 */
+.page-header {
+  background: white;
+  padding: 1.5rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.page-title i {
+  color: #667eea;
+}
+
+/* 操作按钮组 */
+.action-buttons {
+  display: flex;
+  gap: 0.75rem;
+}
+
+/* 现代化按钮 */
+.modern-btn {
+  padding: 0.625rem 1.25rem;
+  border-radius: 12px;
+  font-weight: 500;
+  border: none;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.modern-btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.modern-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+}
+
+.modern-btn-secondary {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.modern-btn-secondary:hover {
+  background: #e5e7eb;
+}
+
+/* 内容卡片 */
+.content-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+/* 表格样式 */
+.modern-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 0;
+}
+
+.modern-table thead {
+  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+}
+
+.modern-table thead th {
+  padding: 1rem 1.5rem;
+  text-align: left;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #6b7280;
+  border-bottom: 2px solid #e5e7eb;
+  white-space: nowrap;
+}
+
+.modern-table tbody td {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #f3f4f6;
+  font-size: 0.875rem;
+  color: #374151;
+}
+
+.modern-table tbody tr {
+  transition: background-color 0.2s;
+}
+
+.modern-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+.modern-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* 图片缩略图 */
+.table-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 2px solid #e5e7eb;
+}
+
+/* 状态徽章 */
+.status-badge {
+  padding: 0.375rem 0.875rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.status-active {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.status-inactive {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.status-pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-success {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.status-danger {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.status-info {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.status-warning {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+/* 角色徽章 */
+.role-badge-admin {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 0.375rem 0.875rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.role-badge-user {
+  background: #dbeafe;
+  color: #1e40af;
+  padding: 0.375rem 0.875rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* 操作按钮 */
+.action-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1.5px solid;
+  transition: all 0.3s;
+  background: transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  white-space: nowrap;
+}
+
+.action-btn i {
+  font-size: 1rem;
+}
+
+.action-btn span {
+  font-size: 0.875rem;
+}
+
+.action-btn-primary {
+  border-color: #667eea;
+  color: #667eea;
+}
+
+.action-btn-primary:hover {
+  background: #667eea;
+  color: white;
+}
+
+.action-btn-success {
+  border-color: #10b981;
+  color: #10b981;
+}
+
+.action-btn-success:hover {
+  background: #10b981;
+  color: white;
+}
+
+.action-btn-danger {
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+.action-btn-danger:hover {
+  background: #ef4444;
+  color: white;
+}
+
+.action-btn-info {
+  border-color: #3b82f6;
+  color: #3b82f6;
+}
+
+.action-btn-info:hover {
+  background: #3b82f6;
+  color: white;
+}
+
+.action-btn-warning {
+  border-color: #f59e0b;
+  color: #f59e0b;
+}
+
+.action-btn-warning:hover {
+  background: #f59e0b;
+  color: white;
+}
+
+.action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.action-btn:disabled:hover {
+  background: transparent;
+  color: inherit;
+}
+
+/* 价格显示 */
+.price-text {
+  color: #ef4444;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* 库存显示 */
+.stock-low {
+  color: #ef4444;
+  font-weight: 600;
+}
+
+.stock-normal {
+  color: #10b981;
+  font-weight: 600;
+}
+
+/* 空状态 */
+.empty-state {
+  padding: 3rem 1.5rem;
+  text-align: center;
+  color: #9ca3af;
+}
+
+.empty-state i {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+/* 模态框样式增强 */
+.modal-content {
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+  border-bottom: 1px solid #e5e7eb;
+  padding: 1.5rem 2rem;
+  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+  border-radius: 16px 16px 0 0;
+}
+
+.modal-title {
+  font-weight: 600;
+  color: #1f2937;
+  font-size: 1.25rem;
+}
+
+.modal-body {
+  padding: 2rem;
+}
+
+.modal-footer {
+  border-top: 1px solid #e5e7eb;
+  padding: 1.5rem 2rem;
+  background: #f9fafb;
+  border-radius: 0 0 16px 16px;
+}
+
+/* 表单样式增强 */
+.form-label {
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.form-control, .form-select {
+  border-radius: 8px;
+  border: 1.5px solid #e5e7eb;
+  padding: 0.625rem 1rem;
+  font-size: 0.875rem;
+  transition: all 0.3s;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* 筛选器 */
+.filter-badge {
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  color: #1e40af;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .page-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  
+  .page-title {
+    font-size: 1.5rem;
+  }
+  
+  .modern-table thead th,
+  .modern-table tbody td {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* 产品描述截断 */
+.product-desc {
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #6b7280;
+  font-size: 0.813rem;
+}
+
+/* 详情视图 */
+.detail-section {
+  background: #f9fafb;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.detail-section h6 {
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+/* 订单项目表格 */
+.order-items-table {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.order-items-table th {
+  background: #f9fafb;
+  font-weight: 600;
+  color: #6b7280;
+  padding: 0.75rem 1rem;
+  font-size: 0.813rem;
+}
+
+.order-items-table td {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid #f3f4f6;
+}
+
+.order-items-table tfoot td {
+  background: #f9fafb;
+  font-weight: 600;
+  padding: 1rem;
+}
