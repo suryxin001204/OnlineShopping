@@ -193,7 +193,7 @@ export default {
 .card-title {
   color: #333;
   font-weight: 600;
-}
+} 
 
 .btn-primary {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);

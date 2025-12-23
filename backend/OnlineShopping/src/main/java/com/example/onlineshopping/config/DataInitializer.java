@@ -23,12 +23,12 @@ public class DataInitializer implements CommandLineRunner {
             admin.setUsername("admin");
             admin.setEmail("admin@example.com");
             admin.setPhone("13800138000");
-            admin.setRole(User.UserRole.ROLE_ADMIN);
             System.out.println("创建管理员用户: admin/admin123");
         } else {
             System.out.println("更新管理员密码为加密格式");
         }
-        // 强制更新密码为加密格式
+        // 强制更新角色和密码
+        admin.setRole(User.UserRole.ROLE_ADMIN);
         admin.setPassword(passwordEncoder.encode("admin123"));
         userRepository.save(admin);
 
@@ -39,11 +39,12 @@ public class DataInitializer implements CommandLineRunner {
             user1.setUsername("user1");
             user1.setEmail("user1@example.com");
             user1.setPhone("13800138001");
-            user1.setRole(User.UserRole.ROLE_USER);
             System.out.println("创建普通用户: user1/user123");
         } else {
             System.out.println("更新user1密码为加密格式");
         }
+        // 强制更新角色和密码
+        user1.setRole(User.UserRole.ROLE_USER);
         user1.setPassword(passwordEncoder.encode("user123"));
         userRepository.save(user1);
         
@@ -54,11 +55,12 @@ public class DataInitializer implements CommandLineRunner {
             user.setUsername("user");
             user.setEmail("user@example.com");
             user.setPhone("13800138002");
-            user.setRole(User.UserRole.ROLE_USER);
             System.out.println("创建普通用户: user/user123");
         } else {
             System.out.println("更新user密码为加密格式");
         }
+        // 强制更新角色和密码
+        user.setRole(User.UserRole.ROLE_USER);
         user.setPassword(passwordEncoder.encode("user123"));
         userRepository.save(user);
 
