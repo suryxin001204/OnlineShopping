@@ -58,15 +58,12 @@
         <div class="col-lg-3 col-md-4 col-sm-6" v-for="product in filteredProducts" :key="product.id">
           <div class="product-card-modern">
             <!-- 商品图片 -->
-            <div class="product-image-wrapper" @click="$router.push(`/products/${product.id}`)">
+            <div class="product-image-wrapper">
               <img 
                 :src="product.imageUrl || '/images/placeholder.jpg'" 
                 :alt="product.name"
                 class="product-image"
               >
-              <div class="product-overlay">
-                <button class="btn btn-light btn-sm">查看详情</button>
-              </div>
               <!-- 缺货标签 -->
               <div v-if="product.stock === 0" class="out-of-stock-badge">
                 售罄
@@ -82,7 +79,7 @@
               <div class="product-category">
                 <span class="badge bg-light text-dark">{{ product.categoryName || '未分类' }}</span>
               </div>
-              <h5 class="product-title" @click="$router.push(`/products/${product.id}`)">
+              <h5 class="product-title">
                 {{ product.name }}
               </h5>
               <p class="product-description">

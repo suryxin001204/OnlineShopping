@@ -674,7 +674,7 @@ export default {
     // 热销商品 TOP 10
     async initTopProductsChart() {
       try {
-        const response = await api.get('/statistics/top-products')
+        const response = await api.get('/admin/dashboard/top-products')
         const data = response.data || []
         
         this.charts.topProducts = echarts.init(this.$refs.topProductsChart)
@@ -694,12 +694,13 @@ export default {
           },
           yAxis: {
             type: 'category',
-            data: data.map(item => item.name)
+            data: data.map(item => item.productName),
+            inverse: true // 让销量最高的在上面
           },
           series: [{
             name: '销量',
             type: 'bar',
-            data: data.map(item => item.sales),
+            data: data.map(item => item.totalSold),
             itemStyle: {
               color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
                 offset: 0,

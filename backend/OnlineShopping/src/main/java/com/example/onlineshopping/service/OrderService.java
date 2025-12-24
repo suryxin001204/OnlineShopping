@@ -115,8 +115,13 @@ public class OrderService {
             order.getOrderItems().add(orderItem);
 
             // 更新商品库存
-            Product product = cartItem.getProduct();
+            Product product = productService.findById(cartItem.getProduct().getId())
+                    .orElseThrow(() -> new RuntimeException("商品信息异常"));
+
             product.setStock(product.getStock() - cartItem.getQuantity());
+            // 更新销量
+            product.setSales((product.getSales() == null ? 0 : product.getSales()) + cartItem.getQuantity());
+
             if (product.getStock() == 0) {
                 product.setStatus(false); // 库存为0时自动下架
             }

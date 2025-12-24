@@ -1,52 +1,63 @@
 https://mermaid.live/
+```mermaid
 erDiagram
-    USER {
-        bigint id PK
-        varchar username
-        varchar password
-        varchar fullname
-        varchar phone
-        varchar role
-        datetime created_at
+    %% 核心实体
+    users {
+        int id PK "用户ID"
+        varchar username "用户名"
+        varchar password "密码"
+        varchar role "角色"
+    }
+    
+    products {
+        int id PK "商品ID"
+        varchar name "商品名称"
+        int price "价格(分)"
+        int stock "库存"
+        int category_id FK "分类ID"
     }
 
-    SUPPLIER {
-        bigint id PK
-        varchar name
-        varchar contact
-        varchar phone
-        varchar address
-        varchar note
-        datetime created_at
+    orders {
+        int id PK "订单ID"
+        varchar order_number "订单号"
+        int user_id FK "用户ID"
+        int total_amount "总金额(分)"
+        varchar status "状态"
     }
 
-    CATEGORY {
-        bigint id PK
-        varchar name
-        varchar description
-        datetime created_at
-        datetime updated_at
+    %% 关联实体
+    categories {
+        int id PK "分类ID"
+        varchar name "分类名称"
+        int parent_id FK "父分类ID"
     }
 
-    MEDICINE {
-        bigint id PK
-        varchar sku
-        varchar name
-        bigint category_id FK
-        bigint supplier_id FK
-        varchar manufacturer
-        varchar unit
-        decimal price
-        int stock
-        varchar batch_no
-        date production_date
-        date expiry_date
-        text description
-        datetime created_at
+    cart_items {
+        int id PK "购物车ID"
+        int user_id FK "用户ID"
+        int product_id FK "商品ID"
+        int quantity "数量"
     }
 
-    SUPPLIER ||--o{ MEDICINE : supplies
-    CATEGORY ||--o{ MEDICINE : classifies
+    order_items {
+        int id PK "详情ID"
+        int order_id FK "订单ID"
+        int product_id FK "商品ID"
+        int quantity "数量"
+        int price "单价(分)"
+    }
+
+    %% 关系定义
+    users ||--o{ orders : places
+    users ||--o{ cart_items : owns
+
+    categories ||--o{ products : contains
+    categories ||--o{ categories : parent
+    
+    products ||--o{ cart_items : in
+    products ||--o{ order_items : in
+    orders ||--|{ order_items : has
+```
 
 
 

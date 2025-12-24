@@ -4,6 +4,27 @@
 
 这是一个基于 Spring Boot + Vue 3 开发的全栈在线购物系统，提供完整的电商功能，包括用户管理、商品管理、购物车、订单处理等核心模块。
 
+## 开发平台及开发环境
+
+### 1. 硬件环境
+- **操作系统**: Windows 10/11 (推荐), macOS, Linux
+- **处理器**: Intel Core i5/i7 或 AMD Ryzen 5/7 及以上
+- **内存**: 16GB RAM (建议)
+- **存储**: 500GB SSD (建议)
+
+### 2. 软件环境
+- **后端开发工具**: IntelliJ IDEA (推荐) / Eclipse
+- **前端开发工具**: Visual Studio Code (推荐) / WebStorm
+- **数据库管理工具**: Navicat Premium / MySQL Workbench / DBeaver
+- **接口测试工具**: Postman / Apifox
+- **版本控制工具**: Git
+
+### 3. 运行环境
+- **JDK 版本**: Java Development Kit 17
+- **Node.js 版本**: v16.0.0 及以上
+- **数据库版本**: MySQL 8.0
+- **浏览器**: Chrome / Edge / Firefox (最新版本)
+
 ## 技术栈
 
 ### 后端技术
@@ -111,6 +132,37 @@ OnlineShopping/
 				├── package.json                                    # 依赖配置
 				└── vite.config.js                                  # Vite配置
 ```
+
+## 前台界面与后台数据库链接
+
+本系统采用前后端分离架构，通过 RESTful API 实现前台界面与后台数据的交互，后台通过 Spring Data JPA 与 MySQL 数据库建立连接。
+
+### 1. 前台与后台的交互 (Frontend to Backend)
+- **交互方式**: 前端使用 **Axios** 发送异步 HTTP 请求，后端通过 **Spring MVC** 控制器接收请求。
+- **数据格式**: 统一使用 **JSON** 格式进行数据传输。
+- **跨域处理**: 开发环境使用 Vite 代理 (`proxy`)，生产环境使用 Nginx 反向代理或后端 CORS 配置。
+- **认证机制**: 使用 **JWT (JSON Web Token)**。前端登录获取 Token 存储在 `localStorage`，后续请求在 Header 中携带 `Authorization: Bearer <token>`。
+
+### 2. 后台与数据库的连接 (Backend to Database)
+- **连接技术**: 使用 **JDBC** 驱动连接 MySQL 数据库。
+- **ORM 框架**: 采用 **Spring Data JPA (Hibernate)** 进行对象关系映射，无需编写繁琐的 SQL 语句。
+- **连接池**: 使用 **HikariCP** 高性能数据库连接池管理连接。
+- **配置位置**: `backend/OnlineShopping/src/main/resources/application.yml`
+  ```yaml
+  spring:
+    datasource:
+      url: jdbc:mysql://localhost:3306/online_shopping...
+      username: root
+      password: 123456
+  ```
+
+### 3. 数据完整链路示例
+以**"查看商品列表"**为例：
+1. **用户操作**: 用户打开首页或点击"商品列表"。
+2. **前端请求**: Vue 组件挂载 (`mounted`) 时调用 `api.get('/products')`。
+3. **后端处理**: `ProductController` 接收 GET 请求，调用 `ProductService.findAll()`。
+4. **数据库查询**: `ProductRepository` 自动生成 SQL `SELECT * FROM products` 并执行。
+5. **数据返回**: MySQL 返回结果集 -> JPA 映射为 Java 对象 -> Jackson 序列化为 JSON -> 返回给前端渲染。
 
 ## 环境要求
 
@@ -357,7 +409,10 @@ npm run dev
 
 ## 更新日志
 
-### v1.0.0 (2025-11-27)
+### v2.0.0 (2025-12-23)
+- ✅ 数据库架构深度优化（视图、触发器、存储过程）
+- ✅ 修复库存管理与销量统计逻辑
+- ✅ 优化前端交互体验
 - ✅ 完成基础的用户注册登录功能
 - ✅ 完成商品管理模块
 - ✅ 完成购物车功能
@@ -378,5 +433,5 @@ npm run dev
 
 ---
 
-**开发时间**: 2025年11月
-**最后更新**: 2025年11月27日
+**开发时间**: 2025年11月 - 12月
+**最后更新**: 2025年12月23日

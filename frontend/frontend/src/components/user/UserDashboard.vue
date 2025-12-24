@@ -50,8 +50,8 @@
 
     <div class="row">
       <!-- 统计卡片 -->
-      <div class="col-md-3 mb-4">
-        <div class="card text-white bg-primary h-100">
+      <div class="col-md-4 mb-4">
+        <div class="card text-white bg-primary h-100 clickable-card" @click="$router.push('/cart')">
           <div class="card-body">
             <div class="d-flex align-items-center">
               <div class="flex-grow-1">
@@ -66,8 +66,8 @@
         </div>
       </div>
 
-      <div class="col-md-3 mb-4">
-        <div class="card text-white bg-success h-100">
+      <div class="col-md-4 mb-4">
+        <div class="card text-white bg-success h-100 clickable-card" @click="$router.push('/orders')">
           <div class="card-body">
             <div class="d-flex align-items-center">
               <div class="flex-grow-1">
@@ -82,8 +82,8 @@
         </div>
       </div>
 
-      <div class="col-md-3 mb-4">
-        <div class="card text-white bg-warning h-100">
+      <div class="col-md-4 mb-4">
+        <div class="card text-white bg-warning h-100 clickable-card" @click="$router.push('/cart')">
           <div class="card-body">
             <div class="d-flex align-items-center">
               <div class="flex-grow-1">
@@ -92,22 +92,6 @@
               </div>
               <div class="flex-shrink-0">
                 <i class="fs-1">💰</i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3 mb-4">
-        <div class="card text-white bg-info h-100">
-          <div class="card-body">
-            <div class="d-flex align-items-center">
-              <div class="flex-grow-1">
-                <h4 class="card-title">{{ favoriteCount }}</h4>
-                <p class="card-text">收藏商品</p>
-              </div>
-              <div class="flex-shrink-0">
-                <i class="fs-1">❤️</i>
               </div>
             </div>
           </div>
@@ -247,6 +231,18 @@ export default {
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 统计卡片样式 */
+.clickable-card {
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.clickable-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  opacity: 0.9;
 }
 
 /* 商品卡片样式 */
