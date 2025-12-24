@@ -127,9 +127,18 @@
               </div>
 
               <div class="mb-3">
-                <label class="form-label">商品图片URL</label>
-                <input type="text" class="form-control" v-model="currentProduct.imageUrl" placeholder="/images/example.jpg">
-                <div class="form-text">请输入图片路径，例如 /images/iphone14.jpg</div>
+                <label class="form-label">商品图片</label>
+                <div class="d-flex gap-3 align-items-start">
+                  <div v-if="currentProduct.imageUrl" class="preview-box">
+                    <img :src="currentProduct.imageUrl" alt="预览" class="img-thumbnail" style="max-height: 100px;">
+                  </div>
+                  <div class="flex-grow-1">
+                    <input type="file" class="form-control" @change="handleFileUpload" accept="image/*">
+                    <div class="form-text">支持 jpg, png 格式，大小不超过 5MB</div>
+                    <!-- 保留手动输入作为备选 -->
+                    <input type="text" class="form-control mt-2" v-model="currentProduct.imageUrl" placeholder="或输入图片URL">
+                  </div>
+                </div>
               </div>
 
               <div class="mb-3">
@@ -191,6 +200,26 @@ export default {
     this.modalInstance = new Modal(this.$refs.productModal)
   },
   methods: {
+    async handleFileUpload(event) {
+      const file = event.target.files[0]
+      if (!file) return
+
+      const formData = new FormData()
+      formData.append('file', file)
+
+      try {
+        const response = await request.post('/upload/product', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        })
+        // 后端返回的是 { url: "/uploads/products/..." }
+        this.currentProduct.imageUrl = response.url
+      } catch (error) {
+        console.error('上传失败:', error)
+        alert('图片上传失败: ' + (error.response?.data || error.message))
+      }
+    },
     async fetchProducts() {
       try {
         let url = '/products'
